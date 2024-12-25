@@ -1,9 +1,12 @@
 import re
 
 
-result = 0
 with open('puzzle_03.txt') as f:
     instructions = f.read()
 
 valid_inputs = re.findall(r'mul\(\d{1,3},\d{1,3}\)', instructions)
-[print(x) for x in valid_inputs]
+result = 0
+for x in valid_inputs:
+    num_1, num_2 = re.findall('[0-9]+', x)
+    result += int(num_1) * int(num_2)
+print(result)
