@@ -7,6 +7,7 @@ def find_xmas(p_grid: [[]], direction: (int, int), x: int, y: int) -> bool:
         print(f'    x = {x_check}        y = {y_check}     letter = {letter}')
         if letter != 'MAS'[i-1]:
             return False
+        xmas_grid[y_check][x_check] = letter
 
     return True
 
@@ -21,10 +22,14 @@ for row in puzzle:
         grid[-1].append(c)
 
 dirs = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (1, -1), (-1, 1), (-1, -1)]
-xmas_grid = list(grid)
+xmas_grid = []
+for y in grid:
+    xmas_grid.append(list(y))
 for y in range(len(xmas_grid)):
-    for x in range(y):
+    for x in range(len(xmas_grid[0])):
         xmas_grid[y][x] = ''
+
+
 
 result = 0
 for y, row in enumerate(grid):
